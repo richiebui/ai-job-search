@@ -1,4 +1,4 @@
-%% Example CV - [YOUR_NAME]
+%% Example CV - Richie Bui
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
@@ -24,18 +24,18 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Richie Bui - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Richie}{Bui}
+\address{San Dimas, CA, USA}{}{}
+\phone[mobile]{(626) 518-2390}
+\email{richiebui@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/richiebui/}{LinkedIn}, \href{https://github.com/richiebui}{GitHub}}
 
 \begin{document}
 
@@ -46,7 +46,7 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{Data engineer and clinical bioinformatics specialist with 8+ years building production-grade ETL/ELT pipelines for FDA-regulated medical device data, most recently on AWS and GCP for continuous glucose monitoring (CGM) systems at Medtronic. Combines strong Python/SQL engineering with applied experience in LLM-based extraction and classification for regulatory compliance, plus an earlier track record in commercial data science and KPI automation. Motivated by data work with direct, real-world impact on patient health outcomes.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -56,15 +56,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{Data Pipeline Engineering}: ETL/ELT design and automation across AWS and GCP, processing 1M+ rows of clinical/vendor telemetry with schema enforcement and validation frameworks
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Regulatory \& Compliance Data Systems}: FDA-regulated data pipelines, audit-ready dataset production, post-market surveillance analytics for medical devices
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Applied LLM \& ML}: LLM-powered extraction pipelines, prompt/model benchmarking against labeled datasets to improve classification accuracy
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Analytics \& BI}: Tableau, Power BI, and Looker dashboarding; PL/SQL-based surveillance analytics; statistical analysis (A/B testing, anomaly detection)
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Cloud Data Platforms}: AWS, GCP, Snowflake, Redshift, BigQuery, Databricks, Oracle DB, MS SQL Server
 
 \end{itemize}
 
@@ -77,31 +77,41 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2023--2025}{Senior Clinical Bioinformatics Engineer}{Medtronic}{Northridge, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Engineered automated ETL/ELT pipelines on AWS to validate and transform CGM sensor data, cutting data preparation time from 6 months to 3 and enabling FDA approval that accelerated \$90M in revenue recognition
+    \item Built and maintained GCP-based batch ingestion pipelines processing 1M+ rows of vendor telemetry data, applying schema enforcement and transformation logic in Python and SQL to cut processing time 40\% and improve analytical reliability across clinical teams
+    \item Developed a post-market surveillance pipeline and Tableau-based analytics layer in PL/SQL that enabled early detection of CGM sensor degradation, eliminating product recalls and saving an estimated \$50M per product line
+    \item Engineered LLM-powered extraction pipelines to identify key signals in complaints, CAPAs, and deviation reports, producing structured, audit-ready datasets aligned to FDA regulatory standards
+    \item Designed and ran LLM performance benchmarks against labeled quality datasets, tuning prompts and model configurations to improve classification accuracy and reduce compliance risk
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2020--2022}{Clinical Bioinformatics Engineer}{Medtronic}{Northridge, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Analyzed and generated high-accuracy glucose sensor reports across 12 global clinical studies using Python and SQL, supporting real-time monitoring and data-driven decisions with 99\% precision
+    \item Collaborated with cross-functional clinical and technical teams to streamline data pipelines and reporting workflows, cutting time from study start-up to patient insight delivery by 66\%
+    \item Synthesized complex clinical study findings, including anomaly detection and statistical outliers, translating technical analyses into actionable insights for executive stakeholders
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2019--2020}{Data Scientist}{The Realest Group, LLC}{Los Angeles, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Built and maintained the company's Redshift database while deprecating legacy data sources, reducing costs 25\% and increasing storage capacity 150\%
+    \item Built and automated SQL-driven ETL pipelines to deliver KPI reporting for cross-functional stakeholders, cutting managerial reporting time from 3 hours to 5 minutes
+\end{itemize}}}
+
+\vspace{3pt}
+
+% --- Earliest Role ---
+\item{\cventry{2015--2018}{Clinical Research Specialist}{Medtronic}{Northridge, CA}{}{\vspace{1pt}
+\begin{itemize}
+    \item Led a clinical research team of 4 conducting non-significant-risk clinical studies on medical devices and technologies for diabetes management and glucose control
+    \item Presented findings on tested medical devices to the CEO, Head of Engineering, and R\&D leadership
 \end{itemize}}}
 
 \end{itemize}
@@ -114,15 +124,11 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
+\item{\cventry{}{Executive MBA}{Quantic School of Business}{Washington, DC}{}{}}
 
 \vspace{3pt}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+\item{\cventry{}{B.S. Molecular and Cellular Biology}{University of Arizona}{Tucson, AZ}{}{}}
 
 \end{itemize}
 
@@ -133,27 +139,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item English (native).
 \end{itemize}
 
 % ============================================================

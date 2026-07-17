@@ -4,72 +4,75 @@
 
 ## Installed portal CLIs (primary for `/scrape`)
 
-`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`; Danish demos and any skill you add with `/add-portal` are included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
+`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. This fork is configured for the **United States**, not Denmark: the four Danish demo portals (jobbank, jobdanmark, jobindex, jobnet) are installed but disabled (`enabled: false` in their SKILL.md) so `/scrape` skips them. Active portals are `linkedin-search` (US-filtered via `--location`), `freehire-search` (US-filtered via `--country US`), and `builtin-search` (US tech/startup board, added via `/add-portal`). You do **not** need a matching `site:` line below for those CLIs to run.
 
 The `site:` query templates in this file are the **WebSearch fallback** — for portals without a CLI, company career pages, or when a CLI fails.
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+Primary (US job boards):
+- **linkedin.com/jobs** - LinkedIn job listings (US); covered by `linkedin-search` CLI
+- **freehire.dev** - tech/software job aggregator (US); covered by `freehire-search` CLI
+- **builtin.com** - US tech/startup job board; covered by `builtin-search` CLI (client-side keyword filtering — see its SKILL.md)
 
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+Secondary (company career pages via Google) - primary target companies (health-tech/medical device):
+- Dexcom, Tandem Diabetes Care, Stryker, Intuitive, and other healthcare/medical device companies
+- Direct Google searches with `site:` filters for these and other known target companies
 
 ## Query Categories
 
-Queries are grouped by priority. Each query should be combined with your location terms (e.g. your city, region, or metro area) where the site supports it.
+Queries are grouped by priority. Each query should be combined with your location terms (Los Angeles / San Dimas, CA, or "Remote") where the site supports it.
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
+### Priority 1: Data Engineering
 
-These match your strongest and most desired career direction.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_COUNTRY]
-```
-
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
-
-These match your domain expertise.
+Primary and most desired career direction.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
+site:linkedin.com/jobs "Data Engineer" Los Angeles
+site:linkedin.com/jobs "Data Engineer" Remote
+"Data Engineer" ETL Python SQL AWS Los Angeles OR Remote
 ```
 
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
+### Priority 2: Health-Tech / Medical Device Data Engineering
 
-Adjacent roles you could pivot into.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
-```
-
-### Priority 4: Broader Technical / Consulting
-
-Wider net for general technical roles.
+Domain expertise: clinical bioinformatics, FDA-regulated data pipelines, medical devices.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+"Data Engineer" OR "Bioinformatics Engineer" medical device FDA Los Angeles OR Remote
+site:linkedin.com/jobs "Data Engineer" Dexcom
+site:linkedin.com/jobs "Data Engineer" Tandem Diabetes Care
+site:linkedin.com/jobs "Data Engineer" Stryker
+site:linkedin.com/jobs "Data Engineer" Intuitive
+```
+
+### Priority 3: Adjacent Roles (Data Scientist / Data Analyst / Analytics Engineer)
+
+Adjacent roles to pivot into.
+
+```
+site:linkedin.com/jobs "Data Scientist" Snowflake OR Databricks Los Angeles OR Remote
+site:linkedin.com/jobs "Data Analyst" SQL Tableau Los Angeles OR Remote
+site:linkedin.com/jobs "Analytics Engineer" Los Angeles OR Remote
+```
+
+### Priority 4: Broader Data / Bioinformatics Roles
+
+Wider net.
+
+```
+site:linkedin.com/jobs "Data Manager" Los Angeles OR Remote
+"Bioinformatics Engineer" Python SQL Remote
+site:linkedin.com/jobs Snowflake OR Redshift OR BigQuery data engineer Los Angeles OR Remote
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+When evaluating results, verify the job location is within reasonable commute distance from home, or fully remote. Acceptable areas:
+- San Dimas, CA and surrounding San Gabriel Valley / Greater Los Angeles area
+- Anywhere within a ~30-mile radius of San Dimas, CA
+- Fully remote (US) - strongly preferred
+- Borderline: Greater LA locations beyond 30 miles but within a reasonable extended commute
+- Too far: any role requiring relocation outside Southern California that is not remote
 
 ## Date Filter
 

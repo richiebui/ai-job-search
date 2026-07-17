@@ -1,0 +1,20 @@
+{
+  "name": "builtin-cli",
+  "version": "1.0.0",
+  "description": "CLI for searching tech/startup jobs on builtin.com — no authentication, zero runtime dependencies. Filters keyword/location/remote-mode/jobage client-side to respect robots.txt.",
+  "type": "module",
+  "main": "src/cli.ts",
+  "bin": {
+    "builtin-search": "src/cli.ts"
+  },
+  "scripts": {
+    "start": "bun run src/cli.ts",
+    "test": "bun test --timeout 30000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/bun": "latest"
+  }
+}

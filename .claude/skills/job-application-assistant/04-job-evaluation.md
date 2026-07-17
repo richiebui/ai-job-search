@@ -20,9 +20,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Python, SQL/PL-SQL, ETL/ELT pipeline engineering, AWS, GCP, Snowflake/Redshift/BigQuery/Databricks, Tableau/Power BI/Looker analytics, applied LLM extraction & prompt/model benchmarking
+**Moderate match areas:** MATLAB, R, Airflow orchestration, general statistical analysis, healthcare/medical device domain outside CGM specifically
+**Weak match areas:** Large-scale distributed systems architecture, core ML/AI model-training engineering (vs. applied LLM benchmarking), managing large teams/orgs (led a team of 4, not large-org leadership)
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for?
@@ -34,9 +34,9 @@ Does work history align with what they're looking for?
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** Data engineering / ETL pipelines in regulated healthcare data, clinical bioinformatics, medical device data systems
+**Moderate:** General data science/analytics, commercial/sales analytics, BI reporting automation
+**Entry-level:** N/A - candidate is mid-to-senior level (8+ years)
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -67,19 +67,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Primary: Data Engineering roles, ideally in health-tech/medical devices (Dexcom, Tandem Diabetes Care, Stryker, Intuitive, and similar)
+- Secondary: Data Scientist, Data Analyst, or Analytics Engineer roles
+- Also open to: Bioinformatics Engineer, Data Manager roles that lean on the same regulated-data-pipeline background
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
-- Non-task factors: leadership style, department culture, company values, degree of autonomy
+- Tasks that energize: Building reliable ETL/data pipelines, improving systems and processes, applying data work toward improving health outcomes ("improving the world around us")
+- Tasks that drain: Undefined or constantly shifting role scope; being expected to be a generalist "jack of all trades" when the role was pitched as clearly scoped
+- Non-task factors: leadership style (deal-breaker: blame-oriented management), department culture, company values, degree of autonomy
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: Actively job-searching with no current income; targets roles offering a $125,000+ USD baseline
+- **Flexibility**: Strong preference for remote; open to onsite/hybrid within a ~30-mile radius of San Dimas, CA
+- **Professional development**: Growth toward more senior/technical data engineering roles, ideally within mission-driven health-tech/medical device organizations
 
 ### 6. Salary Benchmark (Optional)
 

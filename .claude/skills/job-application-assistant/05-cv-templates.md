@@ -109,12 +109,11 @@ Write 5-7 lines that function as an "elevator pitch": a concise, compelling intr
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For Data Engineering roles:**
+> Data engineer with 8+ years building FDA-regulated, production-grade ETL/ELT pipelines across AWS and GCP for continuous glucose monitoring medical devices, cutting data processing time up to 40-50% while enabling regulatory approvals worth $90M+ in revenue. Combines strong Python/SQL engineering with hands-on experience applying LLMs to structured, audit-ready compliance extraction. Thrives in well-scoped, mission-driven teams building tools that directly improve patient outcomes.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For Data Scientist / Data Analyst roles:**
+> Data scientist/analyst spanning clinical bioinformatics and commercial analytics: from designing LLM-based classification benchmarks and PL/SQL surveillance systems that eliminated product recalls, to building Redshift-backed KPI reporting that cut manual reporting time from hours to minutes. Skilled at translating complex technical findings into clear, decision-ready insights for executive stakeholders.
 
 ### Core Competencies / Skills Section (Best Practice)
 Reorder and emphasize based on the role. Use bold category labels.

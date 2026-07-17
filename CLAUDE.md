@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Richie Bui
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Richie Bui, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,68 +10,72 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
-
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
-- **Languages:** [YOUR_LANGUAGES]
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Name:** Richie Bui
+- **Location:** San Dimas, CA, USA (open to a ~30-mile radius in the Greater Los Angeles area; strong preference for remote)
+- **Languages:** English (native)
+- **Status:** Actively searching
+- **LinkedIn headline:** "Data Engineer | Building FDA-Regulated Data Pipelines for Medical Devices"
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **Executive MBA** (dates not listed on source resume) - Quantic School of Business, Washington, DC
+- **B.S. Molecular and Cellular Biology** (dates not listed on source resume) - University of Arizona, Tucson, AZ
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Senior Clinical Bioinformatics Engineer** (2023 - 2025) - **Medtronic** (Northridge, CA)
+  - Engineered automated ETL/ELT pipelines on AWS to validate and transform CGM sensor data, cutting data preparation time from 6 months to 3 and enabling FDA approval that accelerated $90M in revenue recognition
+  - Built and maintained GCP-based batch ingestion pipelines processing 1M+ rows of vendor telemetry data, applying schema enforcement and transformation logic in Python and SQL to cut processing time 40% and improve analytical reliability across clinical teams
+  - Developed a post-market surveillance pipeline and Tableau-based analytics layer in PL/SQL that enabled early detection of CGM sensor degradation, eliminating product recalls and saving an estimated $50M per product line
+  - Established pipeline testing frameworks and led code review for data transformation logic, enforcing validation checks prior to production deployment
+  - Engineered LLM-powered extraction pipelines to identify key signals in complaints, CAPAs, and deviation reports, reducing manual review time and producing structured, audit-ready datasets aligned to FDA regulatory standards
+  - Designed and ran LLM performance benchmarks against labeled quality datasets, tuning prompts and model configurations to improve classification accuracy, accelerate defect detection, and reduce compliance risk
+- **Clinical Bioinformatics Engineer** (2020 - 2022) - **Medtronic** (Northridge, CA)
+  - Analyzed and generated high-accuracy glucose sensor reports across 12 global clinical studies using Python and SQL, supporting real-time monitoring and data-driven decisions with 99% precision
+  - Collaborated with cross-functional clinical and technical teams to streamline data pipelines and reporting workflows, cutting time from study start-up to patient insight delivery by 66%
+  - Synthesized complex clinical study findings, including anomaly detection and statistical outliers, translating technical analyses into actionable insights for executive stakeholders
+- **Data Scientist** (2019 - 2020) - **The Realest Group, LLC** (Los Angeles, CA)
+  - Built and maintained the company's Redshift database while deprecating legacy data sources, reducing costs 25% and increasing storage capacity 150%
+  - Partnered with executive stakeholders to shape data-driven sales strategies, driving a 3% quarter-over-quarter revenue increase
+  - Conducted A/B testing on promotional email strategies, using statistical analysis to drive a 10% increase in click-through rates
+  - Built and automated SQL-driven ETL pipelines to deliver KPI reporting for cross-functional stakeholders, cutting managerial reporting time from 3 hours to 5 minutes
+- **Clinical Research Specialist** (2015 - 2018) - **Medtronic** (Northridge, CA)
+  - Led a clinical research team of 4 conducting non-significant-risk clinical studies on medical devices and technologies for diabetes management and glucose control
+  - Presented findings on tested medical devices to the CEO, Head of Engineering, and R&D leadership, under the direct supervision of the Senior Global Medical Affairs Director
+  - Analyzed physiological data from the company's proprietary continuous glucose monitoring system, investigating anomalies and trends across 1,000+ patients throughout the study
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** Python, SQL, ETL/ELT pipeline engineering, AWS, GCP
+- **Secondary:** MATLAB, R, Airflow, Docker, Git, HTML/CSS, applied LLM benchmarking/prompt tuning
+- **Domain:** Clinical bioinformatics, continuous glucose monitoring (CGM) / diabetes medical devices, FDA-regulated data systems, post-market surveillance analytics
+- **Software:** Tableau, Power BI, Looker, Snowflake, Amazon Redshift, Google BigQuery, Databricks, DBeaver, MySQL, PL/SQL, MS SQL Server, Oracle DB, Anaconda, VS Code, PyCharm, Microsoft Suite/Excel
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+None listed.
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+None.
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+None listed.
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+- **Structured & Deliberate** - Thrives with steady, well-defined role scope and the ability to plan ahead; prefers deliberate, considered decision-making over fast/ad-hoc calls
+- **Small-Team Collaborator** - Most effective in teams of 3-5, comfortable up to 10-12
+- **Strengths:** Reliable pipeline engineering under regulatory constraints, translating technical complexity for executive audiences, methodical problem-solving
+- **Growth areas:** Prefers clearly scoped roles; is actively selecting against roles that blur into undefined "wear many hats" utility positions rather than adapting to them
+- **Thrives in:** Mission-driven, structured, small-to-mid-sized team environments with clearly defined responsibilities
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- Building data systems and pipelines that create tangible real-world impact - "improving the world around us"
+- Working in health-tech / medical devices specifically, where data engineering work translates directly into patient outcomes
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- Health-tech / Medical devices (primary): Dexcom, Tandem Diabetes Care, Stryker, Intuitive, and other healthcare/medical device companies
+- Data Engineering / Analytics more broadly (secondary): open to strong-fit roles outside health-tech
 
 ### Deal-breakers
-<!-- Hard constraints on job search -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Leadership cultures where upper management blames individual contributors for poor management-level decisions
+- Roles pitched with clearly defined scope that in practice become an undefined, catch-all "wear many hats" position
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)

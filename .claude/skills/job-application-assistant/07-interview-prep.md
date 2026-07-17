@@ -14,28 +14,40 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 ## Ready-Made STAR Examples
 
-<!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
+### 1. FDA Approval Acceleration via ETL Redesign (Data Engineering / Regulatory Impact)
+**S:** Medtronic's CGM sensor data validation process required manual, months-long data preparation before FDA submissions could proceed, delaying revenue recognition on device approvals.
+**T:** As Senior Clinical Bioinformatics Engineer, responsible for redesigning the pipeline to validate and transform CGM sensor data faster without compromising regulatory rigor.
+**A:** Engineered automated ETL/ELT pipelines on AWS that handled schema validation and transformation programmatically, replacing manual steps.
+**R:** Cut data preparation time from 6 months to 3, directly enabling FDA approval that accelerated $90M in revenue recognition.
+**Use for:** "Tell me about a time you had significant business impact", "Describe a project with regulatory/compliance constraints"
 
-### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT - what was happening, what was the problem]
-**T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
-**A:** [WHAT YOU DID - specific actions, tools, methods]
-**R:** [OUTCOME - measurable results, adoption, impact]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 2. Post-Market Surveillance Pipeline Preventing Recalls (Proactive Problem-Solving)
+**S:** CGM sensor degradation issues could go undetected until they became large-scale quality incidents requiring product recalls.
+**T:** Build a system to catch sensor degradation trends early using clinical telemetry data.
+**A:** Developed a post-market surveillance pipeline and Tableau-based analytics layer in PL/SQL to detect early degradation signals.
+**R:** Eliminated product recalls, saving an estimated $50M per product line.
+**Use for:** "Tell me about a time you prevented a major problem before it happened", "Describe how you use data to drive proactive decisions"
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 3. LLM-Powered Compliance Extraction (Applying New Technology)
+**S:** Manual review of complaints, CAPAs, and deviation reports for regulatory compliance was slow and inconsistent.
+**T:** Explore whether LLMs could reliably extract key structured signals from unstructured compliance text.
+**A:** Engineered LLM-powered extraction pipelines, then designed and ran performance benchmarks against labeled quality datasets, tuning prompts and model configurations for classification accuracy.
+**R:** Reduced manual review time, produced structured audit-ready datasets aligned to FDA standards, and reduced compliance risk.
+**Use for:** "Tell me about a time you introduced a new technology or tool", "Describe how you evaluate whether an AI/ML solution is production-ready"
 
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 4. Cross-Functional Reporting Speedup at The Realest Group (Efficiency / Ownership)
+**S:** Managerial KPI reporting relied on manual, multi-hour processes to compile cross-functional data, and the company's core data infrastructure (legacy sources feeding a growing Redshift setup) needed consolidation.
+**T:** As the company's sole data scientist, own and modernize the core data infrastructure and reporting automation.
+**A:** Built and automated SQL-driven ETL pipelines feeding KPI reports, while rebuilding the Redshift database and deprecating legacy sources.
+**R:** Cut managerial reporting time from 3 hours to 5 minutes, reduced costs 25%, and increased storage capacity 150%.
+**Use for:** "Tell me about a time you improved a process", "Describe a time you owned a system end-to-end with limited resources"
+
+### 5. Leading a Clinical Research Team (Leadership / Executive Communication)
+**S:** Medtronic needed non-significant-risk clinical studies conducted on diabetes management devices, with findings reported to top leadership.
+**T:** As Clinical Research Specialist, lead a team of 4 running the studies and translate findings for an executive audience.
+**A:** Directed the research team's day-to-day study execution, analyzed physiological data across 1,000+ patients, and prepared/delivered findings directly to the CEO, Head of Engineering, and R&D leadership.
+**R:** Gave leadership clear, credible evidence to guide device development decisions.
+**Use for:** "Tell me about a time you led a team", "Describe presenting technical findings to senior executives"
 
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
 
