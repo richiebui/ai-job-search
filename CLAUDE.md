@@ -107,11 +107,11 @@ After creating or updating a CV or cover letter, re-read the generated file and 
 - [ ] Key job requirements are addressed (with gaps acknowledged where relevant)
 - [ ] Nice-to-have requirements are highlighted where there is a match
 - [ ] If the posting explicitly requests references (e.g. "please provide references," "references required"), the CV includes them - never cut references to fit the page target when the posting asked for them
-- [ ] The most recent role has 3-5 bullets and every other role has at least 3 - these are hard floors, never cut below them to force a page count
+- [ ] The most recent role has 3-5 bullets and every *included* role has at least 3 - these are hard floors, never cut below them to force a page count. If not every role fits at these floors, the least-relevant/oldest role was dropped entirely rather than thinned.
 
 ### Consistency
 - [ ] CV has no profile statement/summary paragraph - it goes straight from the header into Core Competencies
-- [ ] CV follows the standard moderncv/banking format, targeting 1 page (2 pages acceptable only when the bullet-count floors genuinely require it)
+- [ ] CV follows the standard moderncv/banking format and is exactly 1 page
 - [ ] Cover letter uses cover.cls template and established structure
 - [ ] Tone is consistent across CV and cover letter
 - [ ] No contradictions between CV and cover letter content
@@ -126,7 +126,7 @@ After creating or updating a CV or cover letter, re-read the generated file and 
 ### Compiled PDF verification (MANDATORY - never skip)
 Both documents MUST be compiled and visually inspected via the Read tool on the PDF output. "Looks fine in the .tex" is not acceptable - LaTeX page-break decisions are unpredictable. Iterate until these all pass:
 - [ ] CV compiled with **lualatex** (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors). Cover letter compiled with **xelatex** (cover.cls requires fontspec).
-- [ ] **CV is 1 page in the common case; 2 pages only if the Professional Experience bullet-count floors (3-5 most recent, 3+ every other role) genuinely require it after all other cuts** - never 3+, and never fewer bullets than the floor just to force 1 page
+- [ ] **CV is exactly 1 page** - not 2, not 3. If the Professional Experience bullet-count floors (3-5 most recent, 3+ every other included role) don't fit at 1 page with the full role history, a role was dropped to make room, not thinned below the floor
 - [ ] **No orphaned `\cventry` titles** - a job/education title must never sit at the bottom of a page with its bullets spilling to the next page. Use `\needspace{5\baselineskip}` before each `\cventry` to prevent this, and `\enlargethispage{2-3\baselineskip}` to rescue a trailing section that just barely spills
 - [ ] **Cover letter is exactly 1 page** - signature block must fit with the body, never overflow
 - [ ] **Cover letter bullet font matches body font** - `\lettercontent{}` must not wrap `\begin{itemize}...\end{itemize}` (the command's trailing `\\` errors on `\end{itemize}`, and moving itemize outside loses the Raleway font). Standard pattern: close `\lettercontent{}`, then wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`

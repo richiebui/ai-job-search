@@ -20,7 +20,7 @@ All CVs use the moderncv LaTeX package with the "banking" style and "blue" color
 cd cv && lualatex -interaction=nonstopmode main_<company>.tex
 ```
 
-Expected output: `Output written on main_<company>.pdf (1 page, ...)` in the common case. A 2-page result is acceptable **only** when the Professional Experience bullet-count floors (see "Page Budget" below) genuinely require it after every other cut has been made - never cut a role's bullets below the floor just to force 1 page. 3+ pages is always a failure that must be fixed before presenting to the user.
+Expected output: `Output written on main_<company>.pdf (1 page, ...)`. Any page count other than 1 is a failure that must be fixed before presenting to the user - see "Page Budget" below for how to satisfy the bullet-count floors without a 2nd page (drop the least-relevant role, not the bullet floors).
 
 ## Document Structure
 
@@ -126,8 +126,17 @@ List **3-4 key competencies** in bullet format, tailored to the specific job, ea
 
 ### Professional Experience
 - Rewrite bullet points to emphasize aspects most relevant to the target role
-- **Bullet-count floors (hard minimums, not targets to shrink under space pressure):** the most recent role gets 3-5 bullets; every other role gets a **minimum of 3 bullets each**, regardless of how far back it is. Do not collapse older roles to 1-2 bullets or a combined "Earlier Experience" line to save space - see the Page Budget note below on what to cut instead.
+- **Bullet-count floors (hard minimums, not targets to shrink under space pressure):** the most recent role gets 3-5 bullets; every *included* role gets a **minimum of 3 bullets each**, regardless of how far back it is. Do not collapse a role to 1-2 bullets or a combined "Earlier Experience" line to hit these floors within 1 page - drop the role entirely instead. See "How many roles to include" below.
 - **Emphasize measurable results** where possible: "Reduced processing time by X%", "Model adopted by the team"
+
+### How many roles to include (1-page + bullet floors, together)
+
+The bullet-count floors above apply per role *shown* - they say nothing about how many roles to show. When the full work history doesn't fit 1 page at 3+ bullets per role, **include fewer roles**, not thinner ones:
+
+1. Start from the most recent role and work backward, including each role at its full bullet floor (3-5 for the most recent, 3+ for the rest).
+2. Stop including older roles once the CV would no longer fit 1 page with the next one added. Never drop the most recent 1-2 roles to make room for an older one.
+3. When choosing which of two similarly-old roles to cut, prefer keeping the one with higher relevance to the posting or that the cover letter specifically leans on (see "Relevance-weighted cutting" below) - age alone is not the only signal.
+4. A dropped role does not need to be mentioned at all in this tailored CV. It still exists in `01-candidate-profile.md` and `cv/main_example.tex` (the comprehensive master reference) and can resurface in a future application where it is more relevant.
 
 ### Handling Employment Gaps (Best Practice)
 If there is a gap in your employment history:
@@ -154,13 +163,13 @@ If there is a gap in your employment history:
 After writing the CV and before presenting to the user, always compile and visually inspect the PDF. Iterate until the layout is clean. Workflow:
 
 1. Run `lualatex -interaction=nonstopmode main_<company>.tex`
-2. Check the output page count: 1 page in the common case; 2 pages is acceptable only if the bullet-count floors genuinely require it after exhausting the cut order in "Page Budget" above. 3+ pages is always a failure.
-3. Read the PDF via the Read tool and visually inspect every page produced
-4. Check for **orphaned entries**: a `\cventry` title line must never sit alone at the bottom of a page with its bullets pushed onto the next one - this applies whether the CV lands at 1 page or 2
+2. Check the output page count: must be exactly 1
+3. Read the PDF via the Read tool and visually inspect the page
+4. Check for **orphaned entries**: a `\cventry` title line must never sit alone at the bottom with its bullets pushed past the page edge
 
 ### Fixing common page-break problems
 
-**Problem: entry title near a page edge, bullets pushed off**
+**Problem: entry title near the page edge, bullets pushed off**
 Add `\needspace{5\baselineskip}` immediately before the problematic `\cventry`:
 ```latex
 \needspace{5\baselineskip}
@@ -168,14 +177,14 @@ Add `\needspace{5\baselineskip}` immediately before the problematic `\cventry`:
 ```
 Include `\usepackage{needspace}` in the preamble.
 
-**Problem: a trailing section (e.g. References) spills to a new page by a near-miss margin**
-Add `\enlargethispage{2-3\baselineskip}` before the late section to stretch the current page by a few lines. This is the standard LaTeX rescue for near-miss overflows - reserve it for genuine near-misses (roughly N.02 pages), not as a substitute for cutting content or as a way to avoid a legitimate 2nd page.
+**Problem: a trailing section (e.g. References) spills to page 2 by a near-miss margin**
+Add `\enlargethispage{2-3\baselineskip}` before the late section to stretch page 1 by a few lines. This is the standard LaTeX rescue for near-miss overflows - reserve it for genuine near-misses (roughly 1.02 pages), not as a substitute for cutting content or dropping a role.
 
-**Problem: 3+ pages, or a 2nd page with more than a small trailing section**
-Cut content — do not compress geometry or `\vspace`, and do not cut a role's bullets below its floor (3 minimum). See "Relevance-weighted cutting" below: cut Skills, Publications/Awards/Languages, and low-relevance bullets *above* each role's floor first.
+**Problem: 2+ pages with substantial content past page 1**
+Do not compress geometry or `\vspace`, and do not cut a role's bullets below its floor (3 minimum). Instead: cut Skills/Publications/Awards/Languages/References first (see "Relevance-weighted cutting" below), then, if the overflow is still more than a role's worth of content, **drop the least-relevant included role entirely** rather than thinning every role's bullets below the floor - see "How many roles to include" above.
 
-**Problem: content finishes with a lot of empty space on the last page (feels thin)**
-Restore the highest-relevance item that was previously cut - a CV that ends with a mostly-blank bottom third looks incomplete.
+**Problem: content finishes with a lot of empty space on the page (feels thin)**
+Restore the highest-relevance item that was previously cut, or add back a role that was dropped - a 1-page CV with a mostly-blank bottom third looks incomplete.
 
 ## ATS Parseability
 
@@ -194,21 +203,21 @@ What to check in the extraction:
 - **Reading order.** The stock banking style is single-column, so extraction order matches visual order. Custom templates (via `/add-template`) with sidebars or multi-column layouts can interleave unrelated lines; if extraction order is scrambled, the user is trading ATS compatibility for looks and should be told.
 - **Keyword coverage.** Match the posting's required/preferred terms against the extracted text, in the posting's language. Prefer the posting's exact term over a synonym when it is truthfully applicable - ATS matching is often literal. Never add a keyword the profile does not support.
 
-## Page Budget - 1-Page Target, Bullet Floors Take Priority
+## Page Budget - Hard 1-Page Limit
 
-The CV **targets** 1 page, but the Professional Experience bullet-count floors (3-5 for the most recent role, 3+ minimum for every other role) are hard requirements that must never be cut below to force a fit. There is no profile statement competing for space (see "No Profile Statement / Summary" above). Use these limits for everything else:
+The CV **must** fit on exactly 1 page when compiled. The Professional Experience bullet-count floors (3-5 for the most recent role, 3+ minimum for every *included* role) are hard requirements that must never be cut below to force a fit - the lever for reconciling floors with the 1-page limit is **how many roles you include**, not how thin each one is. There is no profile statement competing for space (see "No Profile Statement / Summary" above). Use these limits for everything else:
 
 | Section | Max budget |
 |---------|-----------|
 | Skills | 3-4 items, single line each |
 | Most recent role | 3-5 bullets (hard floor: never fewer than 3) |
-| Every other role | 3+ bullets each (hard floor: never fewer than 3, no matter how old the role) |
+| Every other included role | 3+ bullets each (hard floor: never fewer than 3, no matter how old the role) |
 | Education | 2 entries, one line each |
 | Publications | 1-2 entries, only if directly relevant - otherwise omit |
 | Awards | 1-2 entries, single line each, only if directly relevant - otherwise omit |
 | References | "Available upon request." (single line) - cut first if space is tight |
 
-**Cut order when the page overflows:** References, then Awards/Publications/Languages, then Skills (down to 3 items), then low-relevance bullets *within* the bullet-count floors (see "Relevance-weighted cutting" below - this reframes which 3-5 bullets you keep, it does not go below 3 for any role). If the CV still runs past 1 page after all of that, let it land cleanly on a well-balanced 2 pages rather than violating a bullet floor - a CV that quietly drops below the stated minimum to force 1 page is a worse outcome than an honest 2-page CV. Reducing `\vspace` or geometry scale to force-fit content is never the fix, at either page count.
+**Cut order when the page overflows:** References, then Awards/Publications/Languages, then Skills (down to 3 items), then low-relevance bullets *above* each role's floor (see "Relevance-weighted cutting" below). If the CV still doesn't fit 1 page after all of that, **drop the least-relevant/oldest included role entirely** (see "How many roles to include" above) rather than cutting any remaining role below its 3-bullet floor. Reducing `\vspace` or geometry scale to force-fit content is never the fix.
 
 ## Relevance-weighted cutting (the right way to shrink a CV)
 
@@ -228,14 +237,14 @@ Cut the lowest-total-score line first, regardless of which section it sits in.
 2. **Whole optional sections with no direct relevance.** Publications, Awards, and Languages are the first full sections to drop - cut them entirely before touching anything else, including References.
 3. **References**, per its own carve-out above (cut it unless the posting explicitly asked for references).
 4. **Skills, down to 3 items.** Drop the least keyword-dense competency line before touching any experience bullet.
-5. **Low-relevance experience bullets *above the floor*.** Once every role is down to its 3-bullet floor, the only remaining cuttable content is a bullet *beyond* the floor (i.e. bullet 4 or 5 on the most recent role) that does not touch posting keywords.
-6. **Structural cuts (last resort).** Oldest education entry, dropping Core Competencies further. Never cut a role's bullet count below 3 - if the CV still overflows after this, let it run to a clean 2nd page instead (see "Page Budget" above).
+5. **Low-relevance experience bullets *above the floor*.** Once every included role is down to its 3-bullet floor, the only remaining cuttable content is a bullet *beyond* the floor (i.e. bullet 4 or 5 on the most recent role) that does not touch posting keywords.
+6. **Drop the least-relevant whole role (last resort).** If the CV still doesn't fit 1 page after every cut above, drop the oldest or lowest-relevance included role entirely rather than thinning any role below its 3-bullet floor - see "How many roles to include" above. Never drop the most recent 1-2 roles to make room for an older one.
 
 ### Pitfalls to avoid
 
-- Do not mechanically cut from the bottom of a static section list without checking relevance. "Cut the oldest role first" is wrong if that role is literally about the skill the posting asks for.
-- Do not cut the one concrete example the cover letter leans on. Relevance is measured against the cover letter you wrote, not just the job posting — interviewers will have read both.
-- **Never cut a role's bullets below the 3-bullet floor to force a page count.** A CV that quietly drops below the stated minimum to fit 1 page is a worse outcome than an honest 2-page CV. Prefer `\enlargethispage{2-3\baselineskip}` on a late section for genuine near-misses (roughly N.02 pages); reserve everything else in this list for real overflow.
+- Do not mechanically cut from the bottom of a static section list without checking relevance. "Cut the oldest role first" is wrong if that role is literally about the skill the posting asks for - in that case, drop a different, less relevant role instead.
+- Do not cut the one concrete example the cover letter leans on. Relevance is measured against the cover letter you wrote, not just the job posting — interviewers will have read both. If dropping a role would remove the cover letter's only concrete example, keep that role and drop a different one instead.
+- **Never cut a role's bullets below the 3-bullet floor to force a 1-page fit.** Drop the whole role instead. Prefer `\enlargethispage{2-3\baselineskip}` on a late section for genuine near-misses (roughly 1.02 pages); reserve role-dropping for real overflow.
 
 ## Recommended Section Order
 
