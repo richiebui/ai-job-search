@@ -4,7 +4,7 @@ framework_version: 1.0.0
 
 # CV Templates and Tailoring Guide
 
-<!-- SETUP: Profile statements and section ordering are personalized by running /setup -->
+<!-- SETUP: Section ordering and bullet-count rules below are generic framework guidance; nothing in this file is populated by /setup. -->
 
 ## Template: LaTeX moderncv (Banking Style)
 
@@ -20,7 +20,7 @@ All CVs use the moderncv LaTeX package with the "banking" style and "blue" color
 cd cv && lualatex -interaction=nonstopmode main_<company>.tex
 ```
 
-Expected output: `Output written on main_<company>.pdf (1 page, ...)`. Any page count other than 1 is a failure that must be fixed before presenting to the user.
+Expected output: `Output written on main_<company>.pdf (1 page, ...)` in the common case. A 2-page result is acceptable **only** when the Professional Experience bullet-count floors (see "Page Budget" below) genuinely require it after every other cut has been made - never cut a role's bullets below the floor just to force 1 page. 3+ pages is always a failure that must be fixed before presenting to the user.
 
 ## Document Structure
 
@@ -59,16 +59,19 @@ Expected output: `Output written on main_<company>.pdf (1 page, ...)`. Any page 
 \begin{document}
 \makecvtitle
 
-% 1. Profile statement (2-3 lines, tailored per role)
-% 2. Core Competencies / Skills section
-% 3. Professional Experience section
-% 4. Education section
-% 5. References (single line; cut first if space is tight)
+% No profile statement / summary paragraph - the CV goes straight from the
+% header into Core Competencies. This gives Professional Experience the
+% room it needs for the bullet-count floors below.
 %
-% On a 1-page CV, Languages/Publications/Honors and Awards are optional -
-% include only the ones directly relevant to the target role, slotted in
-% after Education and before References. See "Recommended Section Order"
-% below for the full placement rule.
+% 1. Core Competencies / Skills section
+% 2. Professional Experience section
+% 3. Education section
+% 4. References (single line; cut first if space is tight)
+%
+% Languages/Publications/Honors and Awards are optional - include only the
+% ones directly relevant to the target role, slotted in after Education and
+% before References. See "Recommended Section Order" below for the full
+% placement rule.
 
 \end{document}
 ```
@@ -105,18 +108,11 @@ Two related patterns are fine and should be kept:
 
 ## Section-by-Section Tailoring
 
-### Profile Statement / Elevator Pitch (Best Practice)
-This is the most important section to customize. It appears right after `\makecvtitle`.
+### No Profile Statement / Summary
 
-Write 2-3 lines that function as an "elevator pitch": a concise, compelling introduction explaining why you're qualified for *this specific role*. Focus on what the employer gains from hiring you. Keep it tight - on a 1-page CV this section competes directly with Professional Experience for space.
+The CV does **not** include a profile statement, elevator pitch, or summary paragraph. Go straight from `\makecvtitle` into Core Competencies. This is a deliberate space trade: the bullet-count floors in "Professional Experience" below (3-5 for the most recent role, 3+ minimum for every other role) take priority over an introductory paragraph, and there usually isn't room for both on one page.
 
-**Create 2-3 profile statement templates for your main role types:**
-
-**For Data Engineering roles:**
-> Data engineer with 8+ years building FDA-regulated, production-grade ETL/ELT pipelines across AWS and GCP, cutting data processing time up to 40-50% while enabling regulatory approvals worth $90M+ in revenue. Combines strong Python/SQL engineering with hands-on applied-LLM experience for audit-ready compliance extraction.
-
-**For Data Scientist / Data Analyst roles:**
-> Data scientist/analyst spanning clinical bioinformatics and commercial analytics, from LLM-based classification benchmarks to Redshift-backed KPI reporting that cut manual reporting time from hours to minutes. Skilled at translating technical findings into decision-ready insights for executives.
+If a reviewer or the user asks for a short positioning line, it belongs in the cover letter's opening paragraph, not the CV - the cover letter already carries that "why this role, why me" framing.
 
 ### Core Competencies / Skills Section (Best Practice)
 Reorder and emphasize based on the role. Use bold category labels.
@@ -130,7 +126,7 @@ List **3-4 key competencies** in bullet format, tailored to the specific job, ea
 
 ### Professional Experience
 - Rewrite bullet points to emphasize aspects most relevant to the target role
-- Use 3 bullets for the most recent role, 2 for the previous role, 1 (or a combined one-line "Earlier Experience" entry) for older roles
+- **Bullet-count floors (hard minimums, not targets to shrink under space pressure):** the most recent role gets 3-5 bullets; every other role gets a **minimum of 3 bullets each**, regardless of how far back it is. Do not collapse older roles to 1-2 bullets or a combined "Earlier Experience" line to save space - see the Page Budget note below on what to cut instead.
 - **Emphasize measurable results** where possible: "Reduced processing time by X%", "Model adopted by the team"
 
 ### Handling Employment Gaps (Best Practice)
@@ -158,13 +154,13 @@ If there is a gap in your employment history:
 After writing the CV and before presenting to the user, always compile and visually inspect the PDF. Iterate until the layout is clean. Workflow:
 
 1. Run `lualatex -interaction=nonstopmode main_<company>.tex`
-2. Check the output page count: must be exactly 1
-3. Read the PDF via the Read tool and visually inspect the page
-4. Check for **orphaned entries**: a `\cventry` title line must never sit alone at the bottom with its bullets pushed past the page edge
+2. Check the output page count: 1 page in the common case; 2 pages is acceptable only if the bullet-count floors genuinely require it after exhausting the cut order in "Page Budget" above. 3+ pages is always a failure.
+3. Read the PDF via the Read tool and visually inspect every page produced
+4. Check for **orphaned entries**: a `\cventry` title line must never sit alone at the bottom of a page with its bullets pushed onto the next one - this applies whether the CV lands at 1 page or 2
 
 ### Fixing common page-break problems
 
-**Problem: entry title near the page edge, bullets pushed off**
+**Problem: entry title near a page edge, bullets pushed off**
 Add `\needspace{5\baselineskip}` immediately before the problematic `\cventry`:
 ```latex
 \needspace{5\baselineskip}
@@ -172,14 +168,14 @@ Add `\needspace{5\baselineskip}` immediately before the problematic `\cventry`:
 ```
 Include `\usepackage{needspace}` in the preamble.
 
-**Problem: a trailing section (e.g. References) spills to page 2 by a near-miss margin**
-Add `\enlargethispage{2-3\baselineskip}` before the late section to stretch page 1 by a few lines. This is the standard LaTeX rescue for near-miss overflows - reserve it for genuine near-misses (roughly 1.02 pages), not as a substitute for cutting content.
+**Problem: a trailing section (e.g. References) spills to a new page by a near-miss margin**
+Add `\enlargethispage{2-3\baselineskip}` before the late section to stretch the current page by a few lines. This is the standard LaTeX rescue for near-miss overflows - reserve it for genuine near-misses (roughly N.02 pages), not as a substitute for cutting content or as a way to avoid a legitimate 2nd page.
 
-**Problem: 2 pages with substantial content on page 2**
-Cut content — do not compress geometry or `\vspace`. See "Relevance-weighted cutting" below for the rule.
+**Problem: 3+ pages, or a 2nd page with more than a small trailing section**
+Cut content — do not compress geometry or `\vspace`, and do not cut a role's bullets below its floor (3 minimum). See "Relevance-weighted cutting" below: cut Skills, Publications/Awards/Languages, and low-relevance bullets *above* each role's floor first.
 
-**Problem: content finishes with a lot of empty space on the page (feels thin)**
-Restore the highest-relevance item that was previously cut, or a `\cventry` from an earlier role — a 1-page CV with a mostly-blank bottom third looks incomplete.
+**Problem: content finishes with a lot of empty space on the last page (feels thin)**
+Restore the highest-relevance item that was previously cut - a CV that ends with a mostly-blank bottom third looks incomplete.
 
 ## ATS Parseability
 
@@ -198,23 +194,21 @@ What to check in the extraction:
 - **Reading order.** The stock banking style is single-column, so extraction order matches visual order. Custom templates (via `/add-template`) with sidebars or multi-column layouts can interleave unrelated lines; if extraction order is scrambled, the user is trading ATS compatibility for looks and should be told.
 - **Keyword coverage.** Match the posting's required/preferred terms against the extracted text, in the posting's language. Prefer the posting's exact term over a synonym when it is truthfully applicable - ATS matching is often literal. Never add a keyword the profile does not support.
 
-## Page Budget - Hard 1-Page Limit
+## Page Budget - 1-Page Target, Bullet Floors Take Priority
 
-The CV **must** fit on exactly 1 page when compiled. Use these content limits as a guide:
+The CV **targets** 1 page, but the Professional Experience bullet-count floors (3-5 for the most recent role, 3+ minimum for every other role) are hard requirements that must never be cut below to force a fit. There is no profile statement competing for space (see "No Profile Statement / Summary" above). Use these limits for everything else:
 
 | Section | Max budget |
 |---------|-----------|
-| Profile statement | 2-3 lines |
 | Skills | 3-4 items, single line each |
-| Most recent role | 3 bullets |
-| Previous role | 2 bullets |
-| Older roles | 1 bullet each, or one combined "Earlier Experience" line |
+| Most recent role | 3-5 bullets (hard floor: never fewer than 3) |
+| Every other role | 3+ bullets each (hard floor: never fewer than 3, no matter how old the role) |
 | Education | 2 entries, one line each |
 | Publications | 1-2 entries, only if directly relevant - otherwise omit |
 | Awards | 1-2 entries, single line each, only if directly relevant - otherwise omit |
 | References | "Available upon request." (single line) - cut first if space is tight |
 
-**If in doubt, cut rather than squeeze.** Reducing `\vspace` or geometry scale to force-fit content makes the CV look cramped. A 1-page limit means Publications, Awards, and even References are the first things to drop entirely, not just shrink - see "Relevance-weighted cutting" below.
+**Cut order when the page overflows:** References, then Awards/Publications/Languages, then Skills (down to 3 items), then low-relevance bullets *within* the bullet-count floors (see "Relevance-weighted cutting" below - this reframes which 3-5 bullets you keep, it does not go below 3 for any role). If the CV still runs past 1 page after all of that, let it land cleanly on a well-balanced 2 pages rather than violating a bullet floor - a CV that quietly drops below the stated minimum to force 1 page is a worse outcome than an honest 2-page CV. Reducing `\vspace` or geometry scale to force-fit content is never the fix, at either page count.
 
 ## Relevance-weighted cutting (the right way to shrink a CV)
 
@@ -231,36 +225,34 @@ Cut the lowest-total-score line first, regardless of which section it sits in.
 ### Practical order of cuts (easiest → last resort)
 
 1. **Redundancy.** If an achievement appears in both Core Competencies AND a role bullet, the Core Competencies version is usually the cleaner cut (the experience bullet is more concrete evidence).
-2. **Profile-statement fluff.** A sentence that just restates what Publications or Skills will show. ("Peer-reviewed publications on X..." is already a Publications entry — profile can claim it once and stop.)
-3. **Low-relevance experience bullets.** A bullet about work that does not touch posting keywords, wherever it sits. This cuts across sections before touching the structural list.
-4. **Low-relevance supporting content.** An older-role bullet that does not speak to the target role. A certification that does not touch the posting's stack. A single-native-language Languages section (omit it entirely rather than condense - it rarely carries signal on a 1-page CV).
-5. **Whole sections with no direct relevance.** Publications, Awards, and References are the first full sections to drop on a 1-page CV - cut them entirely before touching experience bullets.
-6. **Last-resort structural cuts.** Oldest education entry, tightening an older role to a single combined line, dropping Core Competencies to 3 items. These only happen if the relevance-weighted cuts above have already been exhausted.
+2. **Whole optional sections with no direct relevance.** Publications, Awards, and Languages are the first full sections to drop - cut them entirely before touching anything else, including References.
+3. **References**, per its own carve-out above (cut it unless the posting explicitly asked for references).
+4. **Skills, down to 3 items.** Drop the least keyword-dense competency line before touching any experience bullet.
+5. **Low-relevance experience bullets *above the floor*.** Once every role is down to its 3-bullet floor, the only remaining cuttable content is a bullet *beyond* the floor (i.e. bullet 4 or 5 on the most recent role) that does not touch posting keywords.
+6. **Structural cuts (last resort).** Oldest education entry, dropping Core Competencies further. Never cut a role's bullet count below 3 - if the CV still overflows after this, let it run to a clean 2nd page instead (see "Page Budget" above).
 
 ### Pitfalls to avoid
 
 - Do not mechanically cut from the bottom of a static section list without checking relevance. "Cut the oldest role first" is wrong if that role is literally about the skill the posting asks for.
 - Do not cut the one concrete example the cover letter leans on. Relevance is measured against the cover letter you wrote, not just the job posting — interviewers will have read both.
-- Do not cut to fit if the fit is borderline (1.02 pages). Prefer `\enlargethispage{2-3\baselineskip}` on a late section for near-misses; reserve content cuts for genuine overflow (a page 2 that holds more than a single trailing section).
+- **Never cut a role's bullets below the 3-bullet floor to force a page count.** A CV that quietly drops below the stated minimum to fit 1 page is a worse outcome than an honest 2-page CV. Prefer `\enlargethispage{2-3\baselineskip}` on a late section for genuine near-misses (roughly N.02 pages); reserve everything else in this list for real overflow.
 
 ## Recommended Section Order
 
 The section order varies by role type:
 
 **For technical / data science / ML roles:**
-1. Profile statement / elevator pitch
-2. Core competencies / Skills
-3. Professional Experience (reverse chronological)
-4. Education (reverse chronological)
-5. Languages / Publications / Awards (only the ones kept - see below)
-6. References (single line; cut first if space is tight)
+1. Core competencies / Skills
+2. Professional Experience (reverse chronological)
+3. Education (reverse chronological)
+4. Languages / Publications / Awards (only the ones kept - see below)
+5. References (single line; cut first if space is tight)
 
 **For domain-specific / specialist roles:**
-1. Profile statement / elevator pitch
-2. Core competencies / Skills
-3. Education (reverse chronological) - credentials are a key qualifier
-4. Professional Experience (reverse chronological)
-5. Languages / Publications / Awards (only the ones kept - see below)
-6. References (single line; cut first if space is tight)
+1. Core competencies / Skills
+2. Education (reverse chronological) - credentials are a key qualifier
+3. Professional Experience (reverse chronological)
+4. Languages / Publications / Awards (only the ones kept - see below)
+5. References (single line; cut first if space is tight)
 
-On a 1-page CV, Languages, Publications, and Awards are optional sections - include only the ones that are directly relevant to the target role and that fit within budget; omit the rest entirely rather than shrinking all of them to fit. When one is kept, it always slots in at position 5, after Education and Professional Experience and before References, in the same relative order listed above (Languages, then Publications, then Awards) if more than one is kept - never between Skills and Experience.
+There is no profile statement / elevator pitch step - see "No Profile Statement / Summary" above. Languages, Publications, and Awards are optional sections - include only the ones that are directly relevant to the target role and that fit within budget; omit the rest entirely rather than shrinking all of them to fit. When one is kept, it always slots in after Education and Professional Experience and before References, in the same relative order listed above (Languages, then Publications, then Awards) if more than one is kept - never between Skills and Experience.

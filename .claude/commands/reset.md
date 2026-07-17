@@ -18,7 +18,7 @@ If `$ARGUMENTS` is empty or does not contain a recognized scope keyword, ask:
 
 > **What would you like to reset?**
 >
-> - **`profile`** — Clears candidate data from the skill files (profile, behavioral, STAR examples, profile statements). The framework structure and writing rules are preserved. Use this to re-run `/setup` from scratch.
+> - **`profile`** — Clears candidate data from the skill files (profile, behavioral, STAR examples). The framework structure and writing rules are preserved. Use this to re-run `/setup` from scratch.
 >
 > - **`documents`** — Deletes all files you've placed in the `documents/` folder (CV PDFs, LinkedIn export, diplomas, references, past applications). The folder structure and `README.md` are preserved.
 >
@@ -40,7 +40,6 @@ Read the current state of these files and report whether each has content or is 
 
 - `.claude/skills/job-application-assistant/01-candidate-profile.md`
 - `.claude/skills/job-application-assistant/02-behavioral-profile.md`
-- `.claude/skills/job-application-assistant/05-cv-templates.md` *(profile statements section only — framework structure is preserved)*
 - `.claude/skills/job-application-assistant/07-interview-prep.md` *(STAR examples and STAR candidates sections only — framework structure is preserved)*
 
 Present as:
@@ -54,15 +53,13 @@ Present as:
 - 02-behavioral-profile.md — [has content / already empty]
   Full file will be replaced with a blank template.
 
-- 05-cv-templates.md — [has profile statements / already blank]
-  Profile statement templates will be cleared. LaTeX structure and tailoring guidelines are preserved.
-
 - 07-interview-prep.md — [has STAR examples / already blank]
   STAR examples and any STAR candidate stubs will be cleared. Framework, tough questions, and roleplay guidelines are preserved.
 
 The following files are NOT touched (they contain framework rules, not candidate data):
   - 03-writing-style.md
   - 04-job-evaluation.md
+  - 05-cv-templates.md
   - 06-cover-letter-templates.md
 ```
 
@@ -160,15 +157,7 @@ Wait for the user's response.
 ## Using This in Applications
 ```
 
-**For `05-cv-templates.md`**, locate the section that begins with `**Profile statement templates` and extends through the role-specific template blocks. Replace only that section with:
-
-```markdown
-**Profile statement templates:**
-
-<!-- Run /setup to populate role-specific profile statements -->
-```
-
-Leave all other content in `05-cv-templates.md` intact.
+`05-cv-templates.md` is not touched by a profile reset - it holds no per-user content (see the file's own note that it is not populated by `/setup`), so there is nothing to clear.
 
 **For `07-interview-prep.md`**, locate and remove:
 - The entire `## Ready-Made STAR Examples` section and all numbered STAR examples under it

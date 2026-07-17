@@ -66,9 +66,10 @@ Also read the most recent existing CV and cover letter files for concrete struct
 ### CV (`cv/main_<company>.tex`)
 - Always in **English**
 - Follow the moderncv/banking format from `05-cv-templates.md`
-- Tailor the profile statement and experience bullets to the specific role
+- No profile statement/summary - go straight from the header into Core Competencies
+- Tailor the experience bullets to the specific role; the most recent role gets 3-5 bullets, every other role gets a minimum of 3 (hard floors - see `05-cv-templates.md`)
 - Reframe skills and achievements to match job requirements
-- Keep to 1 page
+- Target 1 page; 2 pages is acceptable only if the bullet-count floors genuinely require it after other cuts
 
 ### Cover Letter (`cover_letters/cover_<company>_<role>.tex`)
 - **Match the language of the job posting** (Danish posting -> Danish cover letter, English posting -> English cover letter)
@@ -164,9 +165,9 @@ Once the reviewer agent returns its feedback:
 
 1. **Apply Part A (structured edits) directly with the Edit tool.** Do NOT re-read the draft files — you already have them in context from Step 2, and the reviewer's `old_string` values were quoted from that same text. For each edit in the JSON array, call `Edit` with the given `file`, `old_string`, and `new_string`. Skip any whose rationale would require fabricating content.
 2. **Apply Part B (narrative suggestions)** using judgment. These need interpretation, not mechanical replacement. Walk through every Part B category the reviewer returned and address it:
-   - **Missed keywords/requirements:** add the keyword or capability where it fits naturally in the CV or cover letter. Prefer the experience bullets (concrete evidence) over the profile statement (abstract claim).
+   - **Missed keywords/requirements:** add the keyword or capability where it fits naturally in the CV or cover letter. The CV has no profile statement, so this always means an experience bullet (concrete evidence) or, for the cover letter, the opening/motivation paragraph.
    - **Company/department-specific angles:** weave the reviewer's research into the cover letter opening or motivation paragraph. Verify every company claim via WebFetch/WebSearch before including it — do not trust reviewer research at face value.
-   - **Action-oriented reframing:** rewrite passive or generic phrasing (CV profile statement, cover letter opening, bullet leads). Structural weakness that the reviewer flagged without a clean JSON edit lives here.
+   - **Action-oriented reframing:** rewrite passive or generic phrasing (CV bullet leads, cover letter opening). Structural weakness that the reviewer flagged without a clean JSON edit lives here.
    - **Tone and style issues:** apply the writing-style-guide fixes (no em-dashes, no cliches, no apologetic hedging, consistent first-person active voice).
    Use Edit for targeted changes; only re-read a file if an edit fails because the surrounding text has shifted.
 3. Do NOT incorporate any suggestion that would fabricate skills or experience. If a posting requirement is a genuine gap, acknowledge it honestly and frame adjacent experience instead.
@@ -196,10 +197,10 @@ If either compile fails, fix the error and re-compile until clean.
 Read both PDFs via the Read tool and verify:
 
 **CV (`cv/main_<company>.pdf`):**
-- [ ] Exactly 1 page (not 2, not 3)
-- [ ] No orphaned `\cventry` titles — a job/education title line must never sit alone at the bottom with its bullets pushed onto a second page. This is the most common failure.
-- [ ] If a near-miss overflow was rescued with `\enlargethispage`, no section heading is left isolated at the top of the resulting second page with only 1-2 lines below it — that rescue must not trade one layout defect for another.
-- [ ] No awkward whitespace gaps, and no large empty space at the bottom of the page
+- [ ] 1 page in the common case; 2 pages only if the bullet-count floors (3-5 most recent role, 3+ every other role) genuinely require it after other cuts — never 3+, and never fewer bullets than the floor just to force 1 page
+- [ ] No orphaned `\cventry` titles — a job/education title line must never sit alone at the bottom of a page with its bullets pushed onto the next one. This is the most common failure.
+- [ ] If a near-miss overflow was rescued with `\enlargethispage`, no section heading is left isolated at the top of the resulting page with only 1-2 lines below it — that rescue must not trade one layout defect for another.
+- [ ] No awkward whitespace gaps, and no large empty space at the bottom of the last page
 
 **Cover letter (`cover_letters/cover_<company>_<role>.pdf`):**
 - [ ] Exactly 1 page
@@ -211,8 +212,8 @@ Read both PDFs via the Read tool and verify:
 If the layout has problems, edit the `.tex` files and recompile. Common fixes (see `05-cv-templates.md` and `06-cover-letter-templates.md` for full details):
 
 - **Orphaned CV entry title:** `\usepackage{needspace}` in preamble, then `\needspace{5\baselineskip}` immediately before the problematic `\cventry`
-- **CV spills to page 2 with only a trailing section:** `\enlargethispage{2-3\baselineskip}` before a late section
-- **Substantial content on page 2:** cut content using **relevance-weighted cutting** (see `05-cv-templates.md` → "Relevance-weighted cutting"). Score each candidate line by (a) relevance to THIS posting's keywords and responsibilities, (b) uniqueness (is it duplicated elsewhere?), (c) narrative load (does the cover letter depend on it?). Cut the lowest-total-score line first, regardless of section. Do NOT mechanically apply a static section-based priority order — an older-role bullet that hits posting keywords is worth more than a recent-role bullet that does not.
+- **CV spills to a 2nd page with only a trailing section:** `\enlargethispage{2-3\baselineskip}` before a late section - but first check whether that 2nd page is actually legitimate (bullet-count floors requiring it); only "rescue" it back to 1 page if the floors are still satisfied without it
+- **CV runs to 3+ pages, or a 2nd page holds more than a trailing section:** cut content using **relevance-weighted cutting** (see `05-cv-templates.md` → "Relevance-weighted cutting") — Skills, Publications/Awards/Languages, and References first, then bullets *above* each role's 3-bullet floor. Never cut a role below 3 bullets to reduce the page count.
 - **Cover letter itemize breaks compile or uses wrong font:** close `\lettercontent{}` before the list, wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`
 - **Cover letter spills to 2 pages:** trim using the same relevance-weighted logic. First cut: sentences that restate what a bullet already said. Second cut: a bullet that does not hit posting keywords. Last resort: a bullet that does hit posting keywords. Never reduce geometry or line spacing.
 
@@ -249,7 +250,7 @@ Failures here are template-level problems: fix them in the `.tex` (e.g. print th
 
 - **covered** — the term appears (verbatim or trivial inflection).
 - **synonym-only** — the concept is present under a different term. If the posting's exact term is truthfully applicable per the profile, prefer the posting's term (ATS keyword matches are often literal).
-- **missing (have it)** — the profile shows the candidate genuinely has this skill but the CV never says it: add it where it fits naturally, preferring experience bullets (concrete evidence) over the profile statement, then re-run 5a–5c.
+- **missing (have it)** — the profile shows the candidate genuinely has this skill but the CV never says it: add it to an experience bullet (concrete evidence) or Core Competencies, then re-run 5a–5c.
 - **missing (gap)** — a genuine gap: leave it missing. **Never stuff keywords.** This is the same honesty rule the reviewer follows — a gap gets acknowledged in the cover letter's framing, not hidden in the CV.
 
 **4. Clean up:** delete the extracted `.txt` file.
